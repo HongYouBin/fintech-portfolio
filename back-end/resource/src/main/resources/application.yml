@@ -1,0 +1,22 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: 
+    username: 
+    password: 
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+
+server:
+  port: 8088 # 사용 포트
+url:
+  host: 
+

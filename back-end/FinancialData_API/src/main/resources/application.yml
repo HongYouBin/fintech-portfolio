@@ -1,0 +1,27 @@
+server:
+  port: 8083
+
+
+spring:
+  jackson:
+    time-zone: Asia/Seoul
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: 
+    username: 
+    password: 
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+
+
+
+  # mongoDB
+  data:
+    mongodb:
+      uri: 
+      database: 
+
