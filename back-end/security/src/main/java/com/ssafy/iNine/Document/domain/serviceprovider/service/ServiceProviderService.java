@@ -73,16 +73,12 @@ public class ServiceProviderService {
     }
 
     public String getApiToken(Long userId) {
-        ServiceProvider serviceProvider = userRepository.findById(userId).orElseThrow(()->{
-            return new CommonException(ExceptionType.USER_NOT_FOUND);
-        });
+        ServiceProvider serviceProvider = userRepository.findById(userId).orElseThrow(()-> new CommonException(ExceptionType.USER_NOT_FOUND));
         return serviceProvider.getApiToken();
     }
 
     public String setApiToken(Long userId) {
-        ServiceProvider serviceProvider = userRepository.findById(userId).orElseThrow(()->{
-            return new CommonException(ExceptionType.USER_NOT_FOUND);
-        });
+        ServiceProvider serviceProvider = userRepository.findById(userId).orElseThrow(()-> new CommonException(ExceptionType.USER_NOT_FOUND));
         String newToken = JwtUtil.generateApiToken(serviceProvider.getEmail());
         userRepository.modifyApiToken(userId, newToken);
         log.info("새로운 토큰:{}", newToken);
@@ -110,13 +106,10 @@ public class ServiceProviderService {
 
     public OAuthClientDetails setOAuthClient(Long userId, OAuthClientDetailsDto.OAuthClientRegistForm oAuthClientRegistForm) {
         ServiceProvider serviceProvider = userRepository.findById(userId)
-                .orElseThrow(() -> {
-                    throw new CommonException(ExceptionType.USER_NOT_FOUND);
-                });
+                .orElseThrow(() -> new CommonException(ExceptionType.USER_NOT_FOUND));
         OAuthClientDetails oAuthClientDetails = OAuthClientDetails.builder()
                 .clientId(String.valueOf(UUID.randomUUID()))
                 .accessTokenValidity(360000)
-//                .authorizedGrantTypes("authorization_code,implicit,password,client_credentials,refresh_token")
                 .authorizedGrantTypes("authorization_code")
                 .scope("read, write")
                 .autoapprove("false")

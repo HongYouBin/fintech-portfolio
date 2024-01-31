@@ -19,7 +19,6 @@ import java.util.Map;
 @RequestMapping("/docs/service")
 @RequiredArgsConstructor
 @Slf4j
-@CrossOrigin("*")
 public class ServiceProviderController {
 
     private final ServiceProviderService serviceProviderService;
@@ -75,7 +74,6 @@ public class ServiceProviderController {
     public DataResponse<?> setApiToken(Principal principal) {
         Long serviceProviderId = Long.parseLong(principal.getName());
         String token = serviceProviderService.setApiToken(serviceProviderId);
-        log.info(token);
         return new DataResponse<>(201, "changed", token);
     }
 }

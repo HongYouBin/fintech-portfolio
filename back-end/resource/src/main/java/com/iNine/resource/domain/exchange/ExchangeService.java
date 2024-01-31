@@ -19,16 +19,6 @@ public class ExchangeService {
                 .build();
     }
 
-//blocking 방법
-//    public ExchangeDto.Data getExchangeInfo() {
-//        ResponseEntity<ResponseDto<ExchangeDto.Data>> result = webClient.build().get().uri("/exchange")
-//                .retrieve()
-//                .toEntity(new ParameterizedTypeReference<ResponseDto<ExchangeDto.Data>>() {}).block();
-//        ResponseDto<ExchangeDto.Data> response = result.getBody();
-//        System.out.println(response.getCode());
-//        return response.getData();
-//    }
-
     //모든 은행과 환율 정보. 전체 정보
     public Mono<ExchangeDto.TotalResponse> getTotalExchangeInfo() {
         return webClient.get().uri("/exchange")

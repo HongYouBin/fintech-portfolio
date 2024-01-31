@@ -22,7 +22,7 @@ public class UserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) {
         System.out.println(username);
         User userInfo = userRepository.findById(username).orElseThrow(() -> {
-            log.info("로그인 실패 회원 정보가 없습니다");
+            log.error("로그인 실패. 회원 정보가 없습니다");
             return new CommonException(ExceptionType.USER_NOT_FOUND);
         });
         return userInfo;

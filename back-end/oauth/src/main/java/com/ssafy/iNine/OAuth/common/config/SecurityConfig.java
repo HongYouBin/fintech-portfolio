@@ -29,7 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${url.host}")
     private String hostUrl;
 
-
     private final CustomAuthenticationProvider customAuthenticationProvider;
     @Bean
     @Override

@@ -12,16 +12,9 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/exchange")
 @RequiredArgsConstructor
 @Slf4j
-@CrossOrigin("*")
 public class ExchangeController {
     private final ExchangeService exchangeService;
-//블록킹 방법
-//    @GetMapping
-//    public com.ssafy.iNine.OAuth.common.response.DataResponse<?> getExchangeInfo() {
-//        ExchangeDto.Data data = exchangeService.getExchangeInfo();
-//
-//        return new DataResponse<>(200, "success", data);
-//    }
+
     //전체 환율 정보
     @GetMapping
     public Mono<ExchangeDto.TotalResponse> getExchangeInfo() {

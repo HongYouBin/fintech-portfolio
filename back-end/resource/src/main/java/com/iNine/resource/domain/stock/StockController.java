@@ -40,7 +40,6 @@ public class StockController {
     @GetMapping("/accounts/all")
     public Mono<StockDto.MyAccountsResponse> getAllAccountInfo(Principal principal){
         String userId = principal.getName().toString();
-//        String userId = "acrow0330@naver.com";
         log.info("userId:{}", userId);
         return stockService.getAllAccountInfo(userId).doOnSuccess(result -> {
                     log.info("result:{}", result);
@@ -53,7 +52,6 @@ public class StockController {
     @PostMapping("/accounts/detail")
     public Mono<StockDto.ProductInfoResponse> getProductInfo(Principal principal, @RequestBody StockRequestDto stockRequestDto){
         String userId = principal.getName().toString();
-//        String userId = "acrow0330@naver.com";
         StockRequestDto.WebClientRequestBody webClientBody = stockRequestDto.getWebClientBody();
         webClientBody.setUser_id(userId);
         return stockService.getStockInfo(webClientBody).doOnSuccess(result -> {
@@ -68,7 +66,6 @@ public class StockController {
     public Mono<StockDto.InvestmentResponse> getProductInfo(Principal principal) {
         String userId = principal.getName().toString();
         log.info("userId:{}", userId);
-//        String userId = "acrow0330@naver.com";
         return stockService.getAllSockInfo(userId).doOnSuccess(result -> {
                     log.info("result:{}", result);
                 })

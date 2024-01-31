@@ -21,7 +21,6 @@ public class MyDataController {
     public Mono<CardDto.CardInfoResponse> getCardList(@RequestParam String orgCode, @RequestParam(required = false) String nextPage,
                                                       @RequestParam int limit, Principal principal){
         String userId = principal.getName().toString();
-        log.info("userId:{}", userId);
         return myDataService.getUserCardInfo(orgCode, nextPage, limit, userId).doOnSuccess(result -> {
                 log.info("result:{}", result);
                 })
@@ -35,7 +34,6 @@ public class MyDataController {
                                                                  @RequestParam String fromDate, @RequestParam String toDate,
                                                                  @RequestParam(required = false) String nextPage, @RequestParam int limit){
 
-        log.info("nextPage:{}", nextPage);
         return myDataService.getCardTransactionInfo(cardId, orgCode, fromDate, toDate, nextPage, limit).doOnSuccess(result -> {
                     log.info("result:{}", result);
                 })
@@ -47,7 +45,6 @@ public class MyDataController {
     @GetMapping("/consumption")
     public Mono<CardDto.consumptionResponse> getConsumptionInfo(Principal principal){
         String userId = principal.getName().toString();
-        log.info("userId:{}", userId);
         return myDataService.getUserConsumptionInfo(userId).doOnSuccess(result -> {
                     log.info("result:{}", result);
                 })

@@ -47,7 +47,6 @@ public class UserController {
         if(error != null && error.equals("true")) {
             model.addAttribute("loginfail", true);
         }
-//        return "login"; // login.html 또는 login.jsp와 같은 로그인 페이지 템플릿의 이름을 반환합니다.
         return "loginForm";
     }
 }

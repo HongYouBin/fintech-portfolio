@@ -70,14 +70,12 @@ public class User implements UserDetails {
     // 잠긴 계정
     @Override
     public boolean isAccountNonLocked() {
-
         return true;
     }
 
     // 패스워드 만료
     @Override
     public boolean isCredentialsNonExpired() {
-
         return true;
     }
 
